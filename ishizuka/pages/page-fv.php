@@ -1,0 +1,3 @@
+<main>
+    Front page
+</main>

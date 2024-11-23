@@ -1,0 +1,154 @@
+@charset "UTF-8";
+/* -------------------------------------------------------------- */
+/*  pagenation  */
+/* -------------------------------------------------------------- */
+.pagination {
+    display: block;
+
+    .screen-reader-text {
+        display: none;
+    }
+    .nav-links {
+        width: 100%;
+        text-align: center;
+
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+            color: #000;
+            border: 1px solid transparent;
+
+            &:last-child {
+                margin-right: 0 !important;
+            }
+        }
+        .prev,
+        .next {
+            width: auto;
+        }
+        .current {
+            border: 1px solid #000;
+        }
+    }
+}
+/*  smp  -------------------------------------------------------- */
+@media screen and (max-width:768px) {
+    .pagination {
+        .nav-links {
+            > * {
+                @include width-sp (30);
+                @include height-sp (30);
+                @include margin-top-sp (40);
+                @include margin-right-sp (10);
+            }
+            .prev,
+            .next {
+                @include width-sp (30);
+                @include height-sp (30);
+            }
+        }
+    }
+}
+/*  PC  --------------------------------------------------------- */
+@media print,screen and (min-width:769px) {
+    .pagination {
+        .nav-links {
+            > * {
+                @include width-pc (30);
+                @include height-pc (30);
+                @include margin-top-pc (60);
+                @include margin-right-pc (10);
+            }
+            .prev,
+            .next {
+                @include width-pc (30);
+                @include height-pc (30);
+            }
+        }
+    }
+}
+
+/* -------------------------------------------------------------- */
+/*  ページネーション（singleページの「前の記事へ」「次の記事へ」）  */
+/* -------------------------------------------------------------- */
+.single__pagination {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+        max-width: 45%;
+
+        a {
+            color: currentColor;
+        }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        background-color: lightgray;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+    }
+    &--prev a,
+    &--next a {
+        position: relative;
+    }
+    &--prev a::before,
+    &--next a::after {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+    }
+    &--next {
+        a {
+            padding-right: 1.5rem;
+
+            &::after {
+                font-family: 'Material Icons';
+                content: '\e409';
+                right: 0;
+            }
+        }
+    }
+    &--prev {
+        a {
+            padding-left: 1.5rem;
+
+            &::before {
+                font-family: 'Material Icons';
+                content: '\e408';
+                left: 0;
+            }
+        }
+    }
+}
+/*  smp  -------------------------------------------------------- */
+@media screen and (max-width:768px) {
+    .single__pagination {
+        @include margin-top-sp (40);
+
+        &--prevTxt,
+        &--nextTxt {
+            @include rem-pc (16);
+        }
+    }
+}
+/*  PC  --------------------------------------------------------- */
+@media print,screen and (min-width:769px) {
+    .single__pagination {
+        @include margin-top-pc (40);
+
+        &--prevTxt,
+        &--nextTxt {
+            @include rem-sp (14);
+        }
+    }
+}

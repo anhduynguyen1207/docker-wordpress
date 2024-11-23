@@ -1,0 +1,618 @@
+/* -------------------------------------------------------------- */
+/*  初期値設定  */
+/* -------------------------------------------------------------- */
+$view-pc: 1280 !global;
+$view-sp: 375 !global;
+$devive-pc: 769 !global;
+$devive-sp: 768 !global;
+$baseFont-pc: 16 !global;
+$baseFont-sp: 16 !global;
+/* -------------------------------------------------------------- */
+/* -------------------------------------------------------------- */
+
+/* -------------------------------------------------------------- */
+/*  media query  */
+/* -------------------------------------------------------------- */
+@media screen and (max-width: #{$devive-sp}px) {
+    html {
+        font-size: (($baseFont-sp / $view-sp) * 100) * 1vw;
+    }
+}
+
+@mixin device-sp() {
+    @media screen and (max-width: #{$devive-sp}px) {
+        @content;
+    }
+}
+
+@media print,screen and (min-width: #{$devive-pc}px) {
+    html {
+        font-size: (($baseFont-pc / $view-pc) * 100) * 1vw;
+    }
+}
+
+@mixin device-pc() {
+    @media print,screen and (min-width: #{$devive-pc}px) {
+        @content;
+    }
+}
+
+/* -------------------------------------------------------------- */
+/*  font-size 相対値化  */
+/* -------------------------------------------------------------- */
+@mixin rem-pc($size, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    font-size: ($size / $baseFont-pc) + rem#{$important};
+}
+
+@mixin rem-sp($size, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    font-size: ($size / $baseFont-sp) + rem#{$important};
+}
+
+/* -------------------------------------------------------------- */
+/*  position 配置 相対値化  */
+/* -------------------------------------------------------------- */
+@mixin top-pc($px-pc, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    top: (($px-pc / $view-pc) * 100) * 1vw#{$important};
+}
+
+@mixin top-sp($px-sp, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    top: (($px-sp / $view-sp) * 100) * 1vw#{$important};
+}
+
+@mixin left-pc($px-pc, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    left: (($px-pc / $view-pc) * 100) * 1vw#{$important};
+}
+
+@mixin left-sp($px-sp, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    left: (($px-sp / $view-sp) * 100) * 1vw#{$important};
+}
+
+@mixin right-pc($px-pc, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    right: (($px-pc / $view-pc) * 100) * 1vw#{$important};
+}
+
+@mixin right-sp($px-sp, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    right: (($px-sp / $view-sp) * 100) * 1vw#{$important};
+}
+
+@mixin bottom-pc($px-pc, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    bottom: (($px-pc / $view-pc) * 100) * 1vw#{$important};
+}
+
+@mixin bottom-sp($px-sp, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    bottom: (($px-sp / $view-sp) * 100) * 1vw#{$important};
+}
+
+/* -------------------------------------------------------------- */
+/*  width and height 相対値化  */
+/* -------------------------------------------------------------- */
+@mixin width-pc($px-pc, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    width: (($px-pc / $view-pc) * 100) * 1vw#{$important};
+}
+
+@mixin width-sp($px-sp, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    width: (($px-sp / $view-sp) * 100) * 1vw#{$important};
+}
+
+@mixin height-pc($px-pc, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    height: (($px-pc / $view-pc) * 100) * 1vw#{$important};
+}
+
+@mixin height-sp($px-sp, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    height: (($px-sp / $view-sp) * 100) * 1vw#{$important};
+}
+
+/* -------------------------------------------------------------- */
+/*  margin and padding 相対値化  */
+/* -------------------------------------------------------------- */
+@mixin padding-pc(
+    $pc-top: 0,
+    $pc-right: 0,
+    $pc-bottom: 0,
+    $pc-left: 0,
+    $important: false
+) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding: ((($pc-top / $view-pc) * 100) * 1vw)
+        ((($pc-right / $view-pc) * 100) * 1vw)
+        ((($pc-bottom / $view-pc) * 100) * 1vw)
+        ((($pc-left / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-top-pc($pc-top: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-top: ((($pc-top / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-right-pc($pc-right: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-right: ((($pc-right / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-bottom-pc($pc-bottom: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-bottom: ((($pc-bottom / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-left-pc($pc-left: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-left: ((($pc-left / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-sp(
+    $sp-top: 0,
+    $sp-right: 0,
+    $sp-bottom: 0,
+    $sp-left: 0,
+    $important: false
+) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding: ((($sp-top / $view-sp) * 100) * 1vw)
+        ((($sp-right / $view-sp) * 100) * 1vw)
+        ((($sp-bottom / $view-sp) * 100) * 1vw)
+        ((($sp-left / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-pc(
+    $pc-m-top: 0,
+    $pc-m-right: 0,
+    $pc-m-bottom: 0,
+    $pc-m-left: 0,
+    $important: false
+) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin: ((($pc-m-top / $view-pc) * 100) * 1vw)
+        ((($pc-m-right / $view-pc) * 100) * 1vw)
+        ((($pc-m-bottom / $view-pc) * 100) * 1vw)
+        ((($pc-m-left / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-sp(
+    $sp-m-top: 0,
+    $sp-m-right: 0,
+    $sp-m-bottom: 0,
+    $sp-m-left: 0,
+    $important: false
+) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin: ((($sp-m-top / $view-sp) * 100) * 1vw)
+        ((($sp-m-right / $view-sp) * 100) * 1vw)
+        ((($sp-m-bottom / $view-sp) * 100) * 1vw)
+        ((($sp-m-left / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-top-pc($pc-top: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-top: ((($pc-top / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-right-pc($pc-right: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-right: ((($pc-right / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-bottom-pc($pc-bottom: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-bottom: ((($pc-bottom / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-left-pc($pc-left: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-left: ((($pc-left / $view-pc) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-top-sp($sp-top: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-top: ((($sp-top / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-right-sp($sp-right: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-right: ((($sp-right / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin padding-bottom-sp($sp-bottom: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-bottom: ((($sp-bottom / $view-sp) * 100) * 1vw);
+}
+
+@mixin padding-left-sp($sp-left: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    padding-left: ((($sp-left / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-top-sp($sp-top: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-top: ((($sp-top / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-right-sp($sp-right: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-right: ((($sp-right / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-bottom-sp($sp-bottom: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-bottom: ((($sp-bottom / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-left-sp($sp-left: 0, $important: false) {
+    @if $important == "important" or $important == true {
+        $important: " !important";
+    } @else {
+        $important: "";
+    }
+
+    margin-left: ((($sp-left / $view-sp) * 100) * 1vw) #{$important};
+}
+
+@mixin margin-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* -------------------------------------------------------------- */
+/*  要素横並び  */
+/* -------------------------------------------------------------- */
+@mixin flex-list(
+    $listAmountPc,
+    $pc-width,
+    $pcMarginRight,
+    $pcMarginBottom,
+    $listAmountSp,
+    $sp-width,
+    $spMarginRight,
+    $spMarginBottom
+) {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+
+    li {
+        @include device-pc() {
+            width: ((($pc-width / $view-pc) * 100) * 1vw);
+            margin-right: ((($pcMarginRight / $view-pc) * 100) * 1vw);
+            margin-bottom: ((($pcMarginBottom / $view-pc) * 100) * 1vw);
+
+            &:nth-child(#{$listAmountPc}n) {
+                margin-right: 0;
+            }
+        }
+
+        @include device-sp() {
+            width: ((($sp-width / $view-sp) * 100) * 1vw);
+            margin-right: ((($spMarginRight / $view-sp) * 100) * 1vw);
+            margin-bottom: ((($spMarginBottom / $view-sp) * 100) * 1vw);
+
+            &:nth-child(#{$listAmountSp}n) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@mixin list-both(
+    $listAmountPc,
+    $pc-width,
+    $pcMarginRight,
+    $pcMarginBottom,
+    $listAmountSp,
+    $sp-width,
+    $spMarginRight,
+    $spMarginBottom
+) {
+    font-size: 0;
+
+    li {
+        vertical-align: top;
+        display: inline-block;
+
+        @include device-pc() {
+            width: ((($pc-width / $view-pc) * 100) * 1vw);
+            margin-right: ((($pcMarginRight / $view-pc) * 100) * 1vw);
+            margin-bottom: ((($pcMarginBottom / $view-pc) * 100) * 1vw);
+
+            &:nth-child(#{$listAmountPc}n) {
+                margin-right: 0;
+            }
+        }
+
+        @include device-sp() {
+            width: ((($sp-width / $view-sp) * 100) * 1vw);
+            margin-right: ((($spMarginRight / $view-sp) * 100) * 1vw);
+            margin-bottom: ((($spMarginBottom / $view-sp) * 100) * 1vw);
+
+            &:nth-child(#{$listAmountSp}n) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@mixin list-pc($listAmountPc, $pc-width, $pcMarginRight, $pcMarginBottom) {
+    font-size: 0;
+
+    li {
+        vertical-align: top;
+        display: inline-block;
+
+        @include device-pc() {
+            width: ((($pc-width / $view-pc) * 100) * 1vw);
+            margin-right: ((($pcMarginRight / $view-pc) * 100) * 1vw);
+            margin-bottom: ((($pcMarginBottom / $view-pc) * 100) * 1vw);
+
+            &:nth-child(#{$listAmountPc}n) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+/* -------------------------------------------------------------- */
+/*  角丸  */
+/* -------------------------------------------------------------- */
+@mixin radius($pc, $sp) {
+    @include device-pc() {
+        border-radius: ((($pc / $view-pc) * 100) * 1vw);
+    }
+
+    @include device-sp() {
+        border-radius: ((($sp / $view-sp) * 100) * 1vw);
+    }
+}
+
+/* -------------------------------------------------------------- */
+/*  ボタン  */
+/* -------------------------------------------------------------- */
+@mixin btn-back-top(
+    $pc-width,
+    $pc-height,
+    $pcPosition-x,
+    $pcPosition-y,
+    $sp-width,
+    $sp-height,
+    $spPosition-x,
+    $spPosition-y
+) {
+    position: fixed;
+
+    @include device-pc() {
+        width: ((($pc-width / $view-pc) * 100) * 1vw);
+        height: ((($pc-height / $view-pc) * 100) * 1vw);
+        bottom: ((($pcPosition-y / $view-pc) * 100) * 1vw);
+        right: ((($pcPosition-x / $view-pc) * 100) * 1vw);
+    }
+
+    @include device-sp() {
+        width: ((($sp-width / $view-sp) * 100) * 1vw);
+        height: ((($sp-height / $view-sp) * 100) * 1vw);
+        bottom: ((($spPosition-y / $view-sp) * 100) * 1vw);
+        right: ((($spPosition-x / $view-sp) * 100) * 1vw);
+    }
+}
+
+/* -------------------------------------------------------------- */
+/*  配置  */
+/* -------------------------------------------------------------- */
+@mixin all-p-center {
+    position: relative;
+
+    > div {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        text-align: center;
+    }
+}
+
+/* -------------------------------------------------------------- */
+/*  ボタンロールオーバー  */
+/* -------------------------------------------------------------- */
+@mixin hover($beforeBgColor, $beforeTxtColor, $afterBgColor, $afterTxtColor) {
+    background-color: $beforeBgColor;
+    color: $beforeTxtColor;
+
+    &:hover {
+        background-color: $afterBgColor;
+        color: $afterTxtColor;
+    }
+}
+
+@mixin expand($className, $scaleSizeWidth, $scaleSizeHeight) {
+    #{$className} {
+        overflow: hidden;
+
+        img {
+            transition: all 0.3s ease;
+            transform: scale(1, 1);
+        }
+    }
+
+    &:hover {
+        #{$className} {
+            img {
+                transform: scale($scaleSizeWidth, $scaleSizeHeight);
+            }
+        }
+    }
+}
